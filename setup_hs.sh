@@ -5,7 +5,7 @@ cat << 'EOF' >> $1.hs
 EOF
 
 cat << 'EOF' >> shell.nix
-{ nixpkgs ? import <nixpkgs> {}, compiler ? "default" }:
+{ nixpkgs ? import <nixpkgs> {}, compiler ? "ghc861" }:
 
 let
 

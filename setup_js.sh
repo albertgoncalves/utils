@@ -32,7 +32,7 @@ with pkgs; mkShell {
     name = "jshint";
 
     buildInputs = [ htmlTidy
-                    nodejs
+                    nodejs-8_x
                   ];
 
     shellHook = ''
