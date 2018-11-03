@@ -31,7 +31,8 @@ cat << 'EOF' >> shell.nix
 with pkgs; mkShell {
     name = "jshint";
 
-    buildInputs = [ nodejs
+    buildInputs = [ htmlTidy
+                    nodejs
                   ];
 
     shellHook = ''
