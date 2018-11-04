@@ -6,7 +6,7 @@ html, body {
 }
 EOF
 
-cat << 'EOF' >> index.html
+cat << EOF >> index.html
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,10 +15,12 @@ cat << 'EOF' >> index.html
         <title></title>
     </head>
     <body>
-        <script src="./script.js"></script>
+        <script src="./$1.js"></script>
     </body>
 </html>
 EOF
+
+>> $1.js
 
 cat << 'EOF' >> .jshintc
 { "esversion": 6
