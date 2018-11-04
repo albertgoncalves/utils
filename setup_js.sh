@@ -12,6 +12,7 @@ cat << 'EOF' >> index.html
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./style.css">
+        <title></title>
     </head>
     <body>
         <script src="./script.js"></script>
