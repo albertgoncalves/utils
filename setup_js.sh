@@ -22,7 +22,7 @@ EOF
 
 >> $1.js
 
-cat << 'EOF' >> .jshintc
+cat << 'EOF' >> .jshintrc
 { "esversion": 6
 , "laxcomma" : true
 }
