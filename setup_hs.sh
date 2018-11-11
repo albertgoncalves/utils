@@ -18,9 +18,10 @@ with pkgs; mkShell {
                   ];
     shellHook = ''
         withfzf() { $1 "$(fzf)"; }
+        hlintnc() { hlint -c=never $1; }
         alias vimfzf="withfzf vim"
         alias runfzf="withfzf runhaskell"
-        alias hlifzf="withfzf hlint -c=never"
+        alias hlifzf="withfzf hlintnc"
     '';
 }
 EOF
