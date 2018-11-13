@@ -17,11 +17,22 @@ with pkgs; mkShell {
                     fzf
                   ];
     shellHook = ''
-        withfzf() { $1 "$(fzf)"; }
         hlintnc() { hlint -c=never $1; }
-        alias vimfzf="withfzf vim"
-        alias runfzf="withfzf runhaskell"
+        strcd()   { cd "$(dirname $1)"; }
+        withfzf() {
+            local h
+            h=$(fzf)
+            if (( $? == 0 )); then
+                $1 "$h"
+            fi
+        }
+
+        alias  cdfzf="withfzf strcd"
         alias hlifzf="withfzf hlintnc"
+        alias runfzf="withfzf runhaskell"
+        alias vimfzf="withfzf vim"
+
+        export -f withfzf
     '';
 }
 EOF

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cat << 'EOF' >> $1.py
-#!/usr/bin/env python
+#!/usr/bin/env python3
 EOF
 
 cat << 'EOF' >> shell.nix
@@ -12,12 +12,30 @@ with pkgs; mkShell {
 
     buildInputs = [ python3
                     python36Packages.pylint
+                    fzf
                   ];
 
     shellHook = ''
         copyfile() { cat $1 | pbcopy; }
+        pylin()    { pylint -s n $1; }
+        strcd()    { cd "$(dirname $1)"; }
+        withfzf() {
+            local h
+            h=$(fzf)
+            if (( $? == 0 )); then
+                $1 "$h"
+            fi
+        }
+
+        alias cpyfzf="withfzf copyfile"
+        alias  cdfzf="withfzf strcd"
+        alias pylfzf="withfzf pylin"
+        alias runfzf="withfzf python3"
+        alias vimfzf="withfzf vim"
+
         export -f copyfile
-        alias pylint='pylint -s n'
+        export -f pylin
+        export -f withfzf
     '';
 }
 EOF
