@@ -17,6 +17,7 @@ with pkgs; mkShell {
                     fzf
                   ];
     shellHook = ''
+        fzfh()    { find . | fzf; }
         hlintnc() { hlint -c=never $1; }
         strcd()   { cd "$(dirname $1)"; }
         withfzf() {
@@ -32,6 +33,7 @@ with pkgs; mkShell {
         alias runfzf="withfzf runhaskell"
         alias vimfzf="withfzf vim"
 
+        export -f fzfh
         export -f withfzf
     '';
 }

@@ -124,5 +124,6 @@ disable=print-statement,
         comprehension-escape,
         missing-docstring,
         bad-whitespace,
-        bad-continuation
+        bad-continuation,
+        invalid-name
 EOF
