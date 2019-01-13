@@ -8,7 +8,7 @@ cat << 'EOF' >> shell.nix
 with import <nixpkgs> {};
 
 stdenv.mkDerivation {
-    name = "r";
+    name = "R";
 
     buildInputs = [ R
                     rPackages.lintr

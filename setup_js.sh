@@ -30,15 +30,12 @@ EOF
 
 cat << 'EOF' >> shell.nix
 { pkgs ? import <nixpkgs> {} }:
-
 with pkgs; mkShell {
-    name = "javascript";
-
+    name = "JavaScript";
     buildInputs = [ htmlTidy
                     nodejs-8_x
                     fzf
                   ];
-
     shellHook = ''
         if [ ! -e node_modules/.bin/jshint ]; then
             npm install --save-dev jshint
@@ -46,8 +43,8 @@ with pkgs; mkShell {
 
         export PATH="$PWD/node_modules/.bin/:$PATH"
 
-        fzfh()    { find . | fzf; }
-        strcd()   { cd "$(dirname $1)"; }
+        fzfh() { find . | fzf; }
+        strcd() { cd "$(dirname $1)"; }
         withfzf() {
             local h
             h="$(fzf --exact)"
@@ -56,7 +53,7 @@ with pkgs; mkShell {
             fi
         }
 
-        alias  cdfzf="withfzf strcd"
+        alias cdfzf="withfzf strcd"
         alias jshfzf="withfzf jshint"
         alias runfzf="withfzf node"
         alias tidfzf="withfzf tidy"
